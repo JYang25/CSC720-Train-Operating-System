@@ -1,0 +1,14 @@
+diff --git a/code/tos/kernel/wm.c b/code/tos/kernel/wm.c
+index 43abf24..bd282f9 100644
+--- a/code/tos/kernel/wm.c
++++ b/code/tos/kernel/wm.c
+@@ -138,6 +138,8 @@ void draw_window_content(WM* window) {
+     }
+   }
+   if (window->cursor_char != 0) {
++    int pos = window->cursor_x + window->cursor_y * window->width;
++    window->buffer[pos] = 0;
+     poke_screen_buffer(window->x + window->cursor_x, window->y + window->cursor_y, window->cursor_char);
+   }
+ }
+
